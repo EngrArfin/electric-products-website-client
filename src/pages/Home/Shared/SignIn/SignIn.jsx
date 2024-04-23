@@ -1,7 +1,52 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../../../provider/AuthProvider';
 
 const SignIn = () => {
+
+    const {signIn} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
+
+
+    const handleLogin = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        
+        signIn(email, password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+
+            Swal.fire({
+                title: "User Login Successful",
+                showClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                }
+              });
+              navigate(from, { replace: true });
+        })
+
+
+    }
+    
     return (
         <div>
             <div className=" max-w-8xl fixed mx-auto hero min-h-screen bg-white-100 ">
@@ -11,7 +56,7 @@ const SignIn = () => {
 
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form /* onSubmit={handleLogin} */ className="card-body">
+                        <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">admin / clien email</span>
@@ -52,7 +97,7 @@ const SignIn = () => {
                             </small>
                         </p>
                         <div className="divider"></div>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
