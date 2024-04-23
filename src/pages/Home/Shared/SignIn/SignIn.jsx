@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../../provider/AuthProvider';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const SignIn = () => {
 
@@ -97,7 +98,7 @@ const SignIn = () => {
                             </small>
                         </p>
                         <div className="divider"></div>
-                        <SocialLogin></SocialLogin>
+                        <GoogleLogin></GoogleLogin>
                     </div>
                 </div>
             </div>
