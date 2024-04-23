@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA8PTaZUCN699g3LcTbGTYOZWXovXZCznQ",
-  authDomain: "electric-kingdom-c705d.firebaseapp.com",
-  projectId: "electric-kingdom-c705d",
-  storageBucket: "electric-kingdom-c705d.appspot.com",
-  messagingSenderId: "691593153660",
-  appId: "1:691593153660:web:b1a9b2518e449df0c78df9"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
