@@ -13,7 +13,7 @@ const SecretRoute = ({children}) => {
     if(user){
         return children;
     }
-    return <Navigate to="/login" state={{form: location}} replace></Navigate>
+    return <Navigate to="/signin" state={{form: location}} replace></Navigate>
 };
 
 
